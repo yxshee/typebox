@@ -1,76 +1,39 @@
-import Compile from 'typebox/compile'
-import System from 'typebox/system'
-import Guard from 'typebox/guard'
-import Format from 'typebox/format'
-import Schema from 'typebox/schema'
-import Value from 'typebox/value'
+import Module from 'typebox/module'
 import Type from 'typebox'
+import * as Fs from 'node:fs'
 
-// ------------------------------------------------------------------
-// Settings
-// ------------------------------------------------------------------
+// done: tests
+// done: build-info
 
-System.Settings.Set({ enumerableKind: false })
+// todo: investigate better type normalization
+// todo: ignore generic types in compiler
+// todo: handle refine
+// todo: handle additional formats
 
-// ------------------------------------------------------------------
-// Guard
-// ------------------------------------------------------------------
+const namespace = Module.JsonSchema({ $defs: Type.Script(`type A = string; type B = string; type C = string; type D = string;`) })
+const anonymous = Module.JsonSchema(Type.Script(`{ x: number }`))
+const scaling = Module.JsonSchema(JSON.parse(Fs.readFileSync('./example/mcp/spec.json', 'utf-8')))
+const simple = Module.JsonSchema({ type: 'string' })
 
-const A = Guard.GraphemeCount('type-📦') // 6
-const B = Guard.HasPropertyKey({ x: 1 }, 'x') // true
+console.log(Fs.writeFileSync('./example/_anonymous.ts', anonymous))
+console.log(Fs.writeFileSync('./example/_namespace.ts', namespace))
+console.log(Fs.writeFileSync('./example/_scaling.ts', scaling))
+console.log(Fs.writeFileSync('./example/_simple.ts', simple))
 
-// ------------------------------------------------------------------
-// Type
-// ------------------------------------------------------------------
+// import Anonymous from './_anonymous.ts'
+// import { Check } from './_anonymous.ts'
+// import Namespace from './_namespace.ts'
+// import Mcp from './_scaling.ts'
+// import { A } from './_namespace.ts'
+// function testA(value: Namespace.A) {}
+// function testB(value: A) {}
+// function testC(value: Anonymous) {}
+// function testD(value: Mcp.CallToolRequest) {}
+// console.log(Anonymous.Check({}))
+// console.log(Namespace.A.Check({}))
+// console.log(A.Check({}))
+// console.log(Check({}))
+// console.log(Mcp.Annotations.Check({}))
 
-const T = Type.Object({
-  x: Type.Number(),
-  y: Type.Number(),
-  z: Type.Number()
-})
-
-// ------------------------------------------------------------------
-// Script
-// ------------------------------------------------------------------
-
-const U = Type.Script(`string with { format: 'email' }`)
-
-const S = Type.Script(
-  { T },
-  `{
-  [K in keyof T]: T[K] | null
-}`
-)
-
-// ------------------------------------------------------------------
-// Infer
-// ------------------------------------------------------------------
-
-type U = Type.Static<typeof U>
-type T = Type.Static<typeof T>
-type S = Type.Static<typeof S>
-
-// ------------------------------------------------------------------
-// Parse
-// ------------------------------------------------------------------
-
-const R = Value.Parse(T, { x: 1, y: 2, z: 3 })
-
-// ------------------------------------------------------------------
-// Compile
-// ------------------------------------------------------------------
-const C = Compile(S)
-
-const X = C.Parse({ x: 1, y: 2, z: 3 })
-
-// ------------------------------------------------------------------
-// Format
-// ------------------------------------------------------------------
-
-const E = Format.IsEmail('user@domain.com')
-
-// ------------------------------------------------------------------
-// Schema
-// ------------------------------------------------------------------
-
-const D = Schema.Parse({ const: 'hello' }, 'hello')
+// Namespace.A.Check({})
+// console.log(A.Schema())

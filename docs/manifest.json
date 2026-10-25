@@ -31,6 +31,12 @@
     "url": "docs/format/url.html",
     "uuid": "docs/format/uuid.html"
   },
+  "module": {
+    "0_validator": "docs/module/0_validator.html",
+    "1_type-module": "docs/module/1_type-module.html",
+    "2_json-schema": "docs/module/2_json-schema.html",
+    "overview": "docs/module/overview.html"
+  },
   "overview": {
     "1_install": "docs/overview/1_install.html",
     "2_setup": "docs/overview/2_setup.html",

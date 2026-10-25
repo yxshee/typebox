@@ -51,6 +51,7 @@ const TOP_LEVEL_ORDER = [
   'type',
   'script',
   'schema',
+  'module',
   'value',
   'format',
   'compile',

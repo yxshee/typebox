@@ -1,0 +1,27 @@
+<h1>Module.JsonSchema</h1>
+<pre><code class="language-typescript">import Module from &#39;typebox/module&#39;
+
+const anonymous = Module.JsonSchema({
+  type: &#39;object&#39;,
+  required: [&#39;x&#39;, &#39;y&#39;, &#39;z&#39;],
+  properties: {
+    x: { type: &#39;number&#39; },
+    y: { type: &#39;number&#39; },
+    z: { type: &#39;number&#39; },
+  }
+})
+
+const module = Module.JsonSchema({
+  $defs: {
+    Vector: {
+      type: &#39;object&#39;,
+      required: [&#39;x&#39;, &#39;y&#39;, &#39;z&#39;],
+      properties: {
+        x: { type: &#39;number&#39; },
+        y: { type: &#39;number&#39; },
+        z: { type: &#39;number&#39; },
+      }
+    }
+  }
+})
+</code></pre>

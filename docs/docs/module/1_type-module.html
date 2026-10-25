@@ -1,0 +1,17 @@
+<h1>Module.TypeModule</h1>
+<pre><code class="language-typescript">import Module from &#39;typebox/module&#39;
+
+const anonymous = Module.TypeModule(Type.Object({
+  x: Type.Number(),
+  y: Type.Number(),
+  z: Type.Number()
+}))
+
+const module = Module.TypeModule(Type.Module({
+  Vector: Type.Object({
+    x: Type.Number(),
+    y: Type.Number(),
+    z: Type.Number()
+  })
+}))
+</code></pre>
