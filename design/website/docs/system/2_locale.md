@@ -27,11 +27,11 @@ import Type from 'typebox'
 
 System.Locale.Set(Locale.fr_FR)                      // French - France
 
-const E = Schema.Errors(Type.Number(), 'not-number') // const E = [false, {
+const E = Schema.Errors(Type.Number(), 'not-number') // const E = [false, [{
                                                      //   keyword: "type",
-                                                     //   schemaPath: "#/type",      
+                                                     //   schemaPath: "#",
                                                      //   instancePath: "",
                                                      //   params: { type: "number" },
                                                      //   message: "doit être number"   
-                                                     // }]
+                                                     // }]]
 ```

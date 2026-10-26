@@ -9,11 +9,11 @@ Creates a Dependent type.
 Example usage is shown below.
 
 ```typescript
-const T = Type.Dependent([                          // const T = {
+const T = Type.Dependent(                           // const T = {
   Type.Number(),                                    //   if: { type: 'number' },
   Type.Literal(1),                                  //   then: { type: 'number', const: 1 },
   Type.String()                                     //   else: { type: 'string' }
-])                                                  // }
+)                                                   // }
 
 
 type T = Static<typeof T>                           // type T = 1 | string
@@ -61,5 +61,5 @@ type C = Dependent<number, 1, unknown>  // unknown
 Use the `IsDependent` function to guard values of this type.
 
 ```typescript
-Value.IsDependent(value)                            // value is TDependent
+Type.IsDependent(value)                             // value is TDependent
 ```

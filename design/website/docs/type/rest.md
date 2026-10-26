@@ -15,8 +15,8 @@ const T = Type.Rest(Type.Tuple([                    // const T = {
 ]))                                                 //     type: "array",
                                                     //     additionalItems: false,
                                                     //     items: [
-                                                    //       { const: 1 },
-                                                    //       { const: 2 }
+                                                    //       { type: "number", const: 1 },
+                                                    //       { type: "number", const: 2 }
                                                     //     ],
                                                     //     minItems: 2
                                                     //   }

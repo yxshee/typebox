@@ -14,7 +14,7 @@ const T = Type.Object({
 })
 
 const S = Type.Pick(T, Type.Union([                 // const S: TObject<{
-  Type.Literal('x')                                 //   x: TNumber,
+  Type.Literal('x'),                                //   x: TNumber,
   Type.Literal('y')                                 //   y: TNumber
 ]))                                                 // }>
 ```

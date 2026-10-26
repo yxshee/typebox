@@ -13,7 +13,10 @@ const T = Type.Object({                             // const T = {
   items: Type.Array(Type.This())                    //   type: 'object',
 })                                                  //   required: ['items'],
                                                     //   properties: {
-                                                    //     items: { $ref: '#' }
+                                                    //     items: {
+                                                    //       type: 'array',
+                                                    //       items: { $ref: '#' }
+                                                    //     }
                                                     //   }
                                                     // }
 

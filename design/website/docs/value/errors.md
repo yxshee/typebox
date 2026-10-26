@@ -18,13 +18,13 @@ const value = { x: 'not-a-number' }
 
 const errors = Value.Errors(T, value)               // const errors = [{
                                                     //   keyword: 'required',     
-                                                    //   schemaPath: '#/required',
+                                                    //   schemaPath: '#',
                                                     //   instancePath: '',
                                                     //   params: { requiredProperties: [ 'y' ] },
                                                     //   message: 'must have required properties y'
                                                     // }, {
                                                     //   keyword: 'type',
-                                                    //   schemaPath: '#/properties/x/type',
+                                                    //   schemaPath: '#/properties/x',
                                                     //   instancePath: '/x',
                                                     //   params: { type: 'number' },
                                                     //   message: 'must be number'

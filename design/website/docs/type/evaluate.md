@@ -50,5 +50,5 @@ Intersect evaluation yields the narrowest constituent
 ```typescript
 const T = Type.Intersect([Type.Literal(1), Type.Number()])
 
-const S = Type.Evaluate(T)                         // const S = { const: 1 }
+const S = Type.Evaluate(T)                         // const S = { type: 'number', const: 1 }
 ```

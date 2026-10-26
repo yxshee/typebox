@@ -59,14 +59,14 @@ Number is a subset of Integer: false
 ```
 
 ```typescript
-const A = Type.Conditional(                                     // const A = { const: true }
+const A = Type.Conditional(                                     // const A = { type: 'boolean', const: true }
   Type.Integer(),
   Type.Number(),
   Type.Literal(true),
   Type.Literal(false)
 )
 
-const B = Type.Conditional(                                      // const B = { const: false }
+const B = Type.Conditional(                                      // const B = { type: 'boolean', const: false }
   Type.Number(),
   Type.Integer(),
   Type.Literal(true),
